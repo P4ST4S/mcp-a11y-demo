@@ -1,20 +1,19 @@
 <!DOCTYPE html>
 <!--
-  Cible de démo VOLONTAIREMENT cassée pour mcp-a11y (https://github.com/P4ST4S/mcp-a11y).
-  Invariants de réinjection (NON négociables - voir README) :
-    - 100% statique, ZÉRO JavaScript -> le DOM rendu == ce fichier source.
-    - TOUTES les couleurs dans l'UNIQUE bloc <style> ci-dessous, via des classes
-      simples, sans CSS externe ni styles inline -> les fixes se remappent par
-      sélecteur CSS.
-  Violations injectées (et UNIQUEMENT celles-ci, toutes corrigeables) :
-    - <html> sans attribut lang            -> axe html-has-lang
-    - pas de <title> dans le <head>        -> axe document-title
-    - 2 <img> sans attribut alt            -> axe image-alt
-    - 3 paires texte/fond < AA 4.5:1       -> axe color-contrast
-        .muted  #777777 sur #ffffff = 4.48:1
-        .link   #5a8fd6 sur #ffffff = 3.32:1
-        .cta    #ffffff sur #6cb2eb = 2.28:1
-    - 2 champs de formulaire sans <label>  -> axe label
+  INTENTIONALLY broken demo target for mcp-a11y (https://github.com/P4ST4S/mcp-a11y).
+  Reinjection invariants (NON-negotiable - see README):
+    - 100% static, ZERO JavaScript -> the rendered DOM == this source file.
+    - ALL colors live in the SINGLE <style> block below, via simple classes,
+      no external CSS and no inline styles -> fixes remap by CSS selector.
+  Injected violations (and ONLY these, all fixable):
+    - <html> with no lang attribute        -> axe html-has-lang
+    - no <title> in the <head>             -> axe document-title
+    - 2 <img> with no alt attribute        -> axe image-alt
+    - 3 text/background pairs < AA 4.5:1   -> axe color-contrast
+        .muted  #777777 on #ffffff = 4.48:1
+        .link   #5a8fd6 on #ffffff = 3.32:1
+        .cta    #ffffff on #6cb2eb = 2.28:1
+    - 2 form fields with no <label>        -> axe label
 -->
 <html>
 <head>
@@ -60,12 +59,12 @@
       color: #173d27;
       background-color: #ffffff;
     }
-    /* Contraste insuffisant : gris sur blanc = 4.48:1 (echoue AA 4.5:1) */
+    /* Insufficient contrast: gray on white = 4.48:1 (fails AA 4.5:1) */
     .muted {
       color: #777777;
       background-color: #ffffff;
     }
-    /* Contraste insuffisant : lien bleu pale sur blanc = 3.32:1 */
+    /* Insufficient contrast: pale blue link on white = 3.32:1 */
     .link {
       color: #5a8fd6;
       background-color: #ffffff;
@@ -107,7 +106,7 @@
       border: 1px solid #c2cdc7;
       border-radius: 0.375rem;
     }
-    /* Contraste insuffisant : texte blanc sur bleu clair = 2.28:1 */
+    /* Insufficient contrast: white text on light blue = 2.28:1 */
     .cta {
       color: #ffffff;
       background-color: #6cb2eb;
@@ -129,62 +128,62 @@
 <body>
   <div class="page">
     <header>
-      <span class="brand">Le Verger Solidaire</span>
+      <span class="brand">The Sharing Orchard</span>
     </header>
 
     <main>
-      <!-- <img> sans alt (image-alt) -->
+      <!-- <img> with no alt (image-alt) -->
       <img class="hero" src="assets/hero.png" width="1200" height="600">
 
-      <h1>Cultivons l'entraide, un fruit a la fois</h1>
+      <h1>Growing kindness, one fruit at a time</h1>
 
       <p class="muted">
-        Le Verger Solidaire replante des arbres fruitiers sur des terrains
-        partages et redistribue les recoltes aux familles du quartier. Rejoignez
-        les benevoles qui font pousser la solidarite.
+        The Sharing Orchard plants fruit trees on shared plots and gives the
+        harvest back to families in the neighborhood. Join the volunteers who
+        are growing solidarity.
       </p>
 
       <p>
-        <a class="link" href="#programme">Decouvrir notre programme de plantation</a>
+        <a class="link" href="#program">Discover our planting program</a>
       </p>
 
       <section class="stats">
         <div>
-          <div class="stat-num">1 240</div>
-          <div class="muted">arbres plantes</div>
+          <div class="stat-num">1,240</div>
+          <div class="muted">trees planted</div>
         </div>
         <div>
           <div class="stat-num">85</div>
-          <div class="muted">benevoles actifs</div>
+          <div class="muted">active volunteers</div>
         </div>
         <div>
           <div class="stat-num">12 t</div>
-          <div class="muted">de fruits redistribues</div>
+          <div class="muted">of fruit shared</div>
         </div>
       </section>
 
-      <!-- 2e <img> sans alt (image-alt) -->
+      <!-- 2nd <img> with no alt (image-alt) -->
       <img class="thumb" src="assets/hero.png" width="600" height="300">
 
       <form class="signup" action="#" method="post">
-        <h2>Devenir benevole</h2>
-        <p class="muted">Laissez-nous vos coordonnees, on vous recontacte.</p>
-        <!-- 2 champs sans <label> associe (label) -->
+        <h2>Become a volunteer</h2>
+        <p class="muted">Leave us your details and we'll get back to you.</p>
+        <!-- 2 fields with no associated <label> (label) -->
         <div class="field">
           <input type="text" id="name" name="name">
         </div>
         <div class="field">
           <input type="email" id="email" name="email">
         </div>
-        <button class="cta" type="submit">Je m'inscris</button>
+        <button class="cta" type="submit">Sign me up</button>
       </form>
     </main>
 
     <footer>
       <p class="muted">
-        Cible de demonstration controlee pour
+        Controlled demonstration target for
         <a class="link" href="https://github.com/P4ST4S/mcp-a11y">mcp-a11y</a>.
-        Page volontairement non accessible.
+        This page is intentionally inaccessible.
       </p>
     </footer>
   </div>
