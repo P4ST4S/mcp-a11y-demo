@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<!--
+  INTENTIONALLY broken demo-site for mcp-a11y.
+  Structural constraints (see plan):
+    - 100% static, ZERO JavaScript  -> the rendered DOM == the source file.
+    - All colors live in the SINGLE <style> block below, simple classes,
+      no complex cascade and no external CSS -> fix_contrast knows where to reinject.
+  Injected violations:
+    - <html> with no lang attribute     (html-has-lang)
+    - no <title>                         (document-title)
+    - <img alt="Black Labrador Retriever looking up at camera against a rustic wooden floor background."> with no alt                  (image-alt)
+    - insufficient contrasts             (color-contrast)
+    - form inputs with no <label>        (label)
+-->
+<html lang="en">
+<head>
+    <title>Untitled page</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      margin: 0;
+      padding: 2rem;
+      background-color: #ffffff;
+    }
+    /* Insufficient contrast: light gray on white (~2.8:1, fails AA 4.5:1) */
+    .muted {
+      color: #767676;
+      background-color: #ffffff;
+    }
+    /* Insufficient contrast: button text (~2.3:1) */
+    .cta {
+      color: #404040;
+      background-color: #6cb2eb;
+      border: none;
+      padding: 0.6rem 1rem;
+      font-size: 1rem;
+    }
+    /* Insufficient contrast on link (~3.3:1) */
+    .link {
+      color: #4c78b4;
+      background-color: #ffffff;
+    }
+    .card {
+      max-width: 40rem;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <h1 class="muted">Acme Widgets</h1>
+
+    <p class="muted">
+      Welcome to our demo shop. This text is intentionally hard to read to
+      illustrate a contrast problem.
+    </p>
+
+    <p>
+      <a class="link" href="#">Learn more about our products</a>
+    </p>
+
+    <img src="https://picsum.photos/id/237/480/320" width="480" height="320">
+
+    <form>
+      <p>
+        <input type="text" id="email" name="email" aria-label="Email">
+      </p>
+      <p>
+        <input type="text" id="name" name="name" aria-label="Name">
+      </p>
+      <p>
+        <button class="cta" type="submit">Sign up</button>
+      </p>
+    </form>
+  </main>
+</body>
+</html>
