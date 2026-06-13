@@ -16,8 +16,9 @@
         .cta    #ffffff sur #6cb2eb = 2.28:1
     - 2 champs de formulaire sans <label>  -> axe label
 -->
-<html>
+<html lang="en">
 <head>
+    <title>Cultivons l'entraide, un fruit a la fois</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
@@ -62,12 +63,12 @@
     }
     /* Contraste insuffisant : gris sur blanc = 4.48:1 (echoue AA 4.5:1) */
     .muted {
-      color: #777777;
+      color: #767676;
       background-color: #ffffff;
     }
     /* Contraste insuffisant : lien bleu pale sur blanc = 3.32:1 */
     .link {
-      color: #5a8fd6;
+      color: #4c78b4;
       background-color: #ffffff;
       text-decoration: underline;
     }
@@ -110,7 +111,7 @@
     /* Contraste insuffisant : texte blanc sur bleu clair = 2.28:1 */
     .cta {
       color: #ffffff;
-      background-color: #6cb2eb;
+      background-color: #4b7ba3;
       border: none;
       padding: 0.7rem 1.4rem;
       font-size: 1rem;
@@ -134,7 +135,7 @@
 
     <main>
       <!-- <img> sans alt (image-alt) -->
-      <img class="hero" src="assets/hero.png" width="1200" height="600">
+      <img class="hero" src="assets/hero.png" width="1200" height="600" alt="A bright yellow sun glows in a clear green sky with soft clouds on the left side.">
 
       <h1>Cultivons l'entraide, un fruit a la fois</h1>
 
@@ -164,17 +165,17 @@
       </section>
 
       <!-- 2e <img> sans alt (image-alt) -->
-      <img class="thumb" src="assets/hero.png" width="600" height="300">
+      <img class="thumb" src="assets/hero.png" width="600" height="300" alt="A bright yellow sun glows in a clear green sky with soft clouds on the left side.">
 
       <form class="signup" action="#" method="post">
         <h2>Devenir benevole</h2>
         <p class="muted">Laissez-nous vos coordonnees, on vous recontacte.</p>
         <!-- 2 champs sans <label> associe (label) -->
         <div class="field">
-          <input type="text" id="name" name="name">
+          <input type="text" id="name" name="name" aria-label="Name">
         </div>
         <div class="field">
-          <input type="email" id="email" name="email">
+          <input type="email" id="email" name="email" aria-label="Email">
         </div>
         <button class="cta" type="submit">Je m'inscris</button>
       </form>
